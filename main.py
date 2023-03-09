@@ -17,6 +17,7 @@ WIN_FONT = pygame.font.SysFont('comicsans', 100)
 BULLET_HIT_SOUND = pygame.mixer.Sound(os.path.join('Assets', 'hitmarker_2.mp3'))
 BULLET_SHOOT_SOUND = pygame.mixer.Sound(
     os.path.join('Assets', '12-Gauge-Pump-Action-Shotgun-Close-Gunshot-A-www.fesliyanstudios.com.mp3'))
+GAME_SOUND = pygame.mixer.Sound(os.path.join('Assets', "GameSound.mp3"))
 SPACESHIP_WIDTH, SPACESHIP_HEIGHT = (55, 40)
 BORDER = pygame.Rect((WIDTH // 2) - 5, 0, 10, HEIGHT)
 
@@ -125,6 +126,10 @@ def main():
                     bullet = pygame.Rect(red.x, red.y + red.height // 2 - 2, 10, 5)
                     red_bullets.append(bullet)
                     BULLET_SHOOT_SOUND.play()
+                if event.key == pygame.K_SPACE:
+                    GAME_SOUND.play()
+                if event.key == pygame.K_LALT:
+                    GAME_SOUND.stop()
             if event.type == RED_HIT:
                 red_health -= 1
                 BULLET_HIT_SOUND.play()
